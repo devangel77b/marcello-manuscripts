@@ -1,0 +1,58 @@
+\documentclass[onecolumn,10pt]{IEEEtran}
+
+\usepackage{graphicx}
+\usepackage{siunitx}
+\newcommand{\myroot}{../}
+\newcommand{\Later}{\textbf{Later.}}
+\newcommand{\Calypteanna}{\emph{Calypte anna}}
+
+\title{Autonomous trajectory planning to copy bird-like maneuvers}
+\author{E.~Marcello and D.~Evangelista\thanks{Authors are with the United States Naval Academy, Department of Weapons, Robotics, and Control Engineering}}
+\date{today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Abstract here. \Later
+\end{abstract}
+
+\section{Background and motivation}
+\Later
+
+\section{Problem statement}
+The aim of my research is to replicate the display dives of Anna’s Hummingbirds (\Calypteanna) with an autonomous quadrotor platform. My project assumes the following are provided: a quadrotor platform, a flight controller, and a method of obtaining three-dimensional (3D) position data of the quadrotor in test flights. I also assume that all position vs. time data related to the hummingbird dive trajectories are given, and that each trajectory can be approximated as a fourth degree polynomial function in a fixed 3D right handed coordinate frame. Given a desired hummingbird flight trajectory, depicted in Figure~\ref{fig-problem-statement-1}a, my quadrotor will autonomously generate and execute the control inputs required to successfully complete the maneuver. 
+
+A successful maneuver is defined as a normalized root mean square error (NRMSE) calculation of less than \SI{5}{\percent} between the time-scaled hummingbird trajectory and the quadrotor trajectory, where each trajectory is defined as a matrix array of positions in the $x$, $y$, $z$ right handed coordinate frame with a given sample period, $\Delta t$. The hummingbird trajectory will be scaled by a constant factor in time to allow for the physical limitations of the quadrotor, e.g. the quadrotor may only have to travel the desired trajectory at half the speed of the hummingbird to still achieve a successful maneuver. This is a necessary adaptation due to the impressive speed and acceleration capabilities of the Anna’s Hummingbirds relative to their size\cite{clark2009courtship}. The ideal result is to fly the hummingbird trajectory at the same speed as the hummingbird, but this may prove to be impossible due to the physical constraints of the quadrotor.\begin{figure}[h]
+\begin{center}
+\includegraphics[height=1.88in]{\myroot/figures/problem-statement-1a.png}%
+\includegraphics[height=1.88in]{\myroot/figures/problem-statement-1b.png}
+\end{center}
+\caption{(a) The five stages of an Anna’s Hummingbird dive maneuver, from \cite{clark2009courtship}. (b) A quadrotor using path planning to fly through a thrown hoop, from \cite{mellinger2011minimum}.}
+\label{fig-problem-statement-1}
+\end{figure}
+
+\section{Literature review}
+\Later
+
+\section{Demonstration plan}
+\Later
+%\subsection{Mathematical analysis}
+%\subsection{Simulation or computational studies}
+%\subsection{Experimental work}
+%\subsection{Property measurement}
+%\subsection{Technical risks and mitigation}
+%\subsection{Time risks and mitigation}
+%\subsection{Justification of high risk activities}
+%\subsection{Budget}
+%\begin{table}[hb]
+%\caption{Budget}
+%\label{table-budget}
+%\end{table}
+
+\section{Conclusion}
+\Later
+
+\bibliographystyle{IEEEtran}
+\bibliography{IEEEabrv,\myroot/references/marcello}
+\end{document}
