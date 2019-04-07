@@ -1,6 +1,6 @@
-\documentclass{wsecapstone}
-% wsecapstone.cls file can be obtained using
-% git clone ssh://git@github.com/devangel77b/wsecapstone.git 
+\documentclass{wrcecapstone}
+% wrcecapstone.cls file can be obtained using
+% git clone ssh://git@github.com/devangel77b/wrcecapstone.git 
 % and putting the file in your texmf tree
 
 \usepackage{graphicx} % for graphics
@@ -15,8 +15,9 @@
 % if using biology style references
 %\usepackage[round,authoryear]{natbib}
 
+\newcommand{\Matlab}{Matlab} % in case your advisor prefers Matlab versus MATLAB
 
-\title{Template for ES402/4 Capstone Report}
+\title{Template for EW402/4 Capstone Report}
 
 \author{Midshipman 1/C Alyssa P. Hacker and Midshipman 1/C Benjamin Bitdiddle}
 %\contactinfo{aphacker at alum dot mit dot edu}
@@ -45,11 +46,13 @@ Your abstract should summarize the objective of your capstone project, briefly e
 \end{abstract}
 
 \section*{Preface: Using the template}
-\LaTeX\ is a document preparation language widely used in scientific and engineering academic publication.  You will need to install \LaTeX\ on your system; we suggest the Miktex distribution \url{https://miktex.org/} on Windows machines. The class files can be obtained from \url{https://github.com/devangel77b/wsecapstone}; they are installed in your \lstinline{texmf} tree. 
+\LaTeX\ is a document preparation language widely used in scientific and engineering academic publication.  You will need to install \LaTeX\ on your system; we suggest the Miktex distribution \url{https://miktex.org/} on Windows machines. The class files can be obtained from \url{https://github.com/devangel77b/wrcecapstone}; they are installed in your \lstinline{texmf} tree. 
 
 Use \LaTeX\ sectioning commands in order to automatically get the correct heading styles for \lstinline{section}, \lstinline{subsection}, and \lstinline{subsubsection}. The * versions of these commands are not numbered and are omitted from the table of contents by default. Use \lstinline{figure} and \lstinline{table} environments to define figures and tables, respectively. Use \lstinline{cite} to provide citations to references. You can also use the \lstinline{footnote} command.  
 
 See Appendix~\ref{app-style} for tips on inserting figures, captions, tables, and equations, as well as some general technical writing tips and style guide information.  Delete this preface section from your final report. Using \LaTeX\ will save your advisor time later if your work is to be reformatted and published as a conference or journal article; it also frees you from worrying too much about the formatting as \LaTeX\ handles such things automagically. 
+
+The sections in this template apply for an engineering design project. If your project is more closely patterned as a science project in which you are testing hypotheses, you and your advisor may choose to organize the report differently. 
 %PREFACE: Using the Template
 %Duplicate this template file by using the Save As command.  Save the new file as a Word document (.docx) rather than a template (.dotx).  Choose a filename that begins with “ES404_” followed by a short project title and your class year. 
 %This electronic document1 is a “live” template. The various components of your paper (title, text, heads, etc.) are already defined on the Style Toolbar above and are illustrated throughout the template.  Please do not change font type, size or page layout.   
@@ -65,13 +68,13 @@ See Appendix~\ref{app-style} for tips on inserting figures, captions, tables, an
 In this section you have three main objectives to get across to a reader:  
 
 \subsection{Motivation}
-First, provide the reader with background information that motivates your overarching problem and discusses areas of potential impact.  Here you might cite societal, economic, political, or military events and trends.
+First, provide the reader with \textbf{background} information that motivates your overarching problem and discusses areas of potential impact.  Here you might cite societal, economic, political, or military events and trends.
 
 \subsection{Problem Statement}
-Second, present your problem statement.   Be succinct yet as specific as possible.  A photo or conceptual diagram is often useful (see Appendix~\ref{app-style} for tips on inserting figures and captions).   Avoid presenting the solution; that belongs in the next section.  Make it clear how your problem statement addresses a need of the overarching problem and the possible impact of a successful design.  If you have specific requirements from a customer or another stakeholder, be sure to include these in this section.
+Second, present your \textbf{problem statement}.   Be succinct yet as specific as possible.  A photo or conceptual diagram is often useful (see Appendix~\ref{app-style} for tips on inserting figures and captions).   Avoid presenting the solution; that belongs in the next section.  Make it clear how your problem statement addresses a need of the overarching problem and the possible impact of a successful design.  If you have specific requirements from a customer or another stakeholder, be sure to include these in this section.
 
 \subsection{Related Work}
-Third, critically discuss and reference similar products or research by others.  Critique their solutions, explicitly stating what attribute you tried to emulate or shortcomings you tried to improve upon.  Be sure to read the guidance on inserting citations and references.
+Third, critically discuss and reference \textbf{similar products or research by others}.  Critique their solutions, explicitly stating what attribute you tried to emulate or shortcomings you tried to improve upon.  Be sure to read the guidance on inserting citations and references.
 
 
 
@@ -80,27 +83,28 @@ Third, critically discuss and reference similar products or research by others. 
 \section{Design Process}
 In this section your main goal is to explain your design process. Use figures to support the discussion and explanation of your design process.
  
-\subsection{Objectives and Pairwise Comparison Chart}
-Utilize content from ES401 and update as appropriate if changes were made along the way. Discuss any competing objectives and how you plan to handle these.
-
-\subsection{Constraints}
-Discuss the limits that constrained the design space. These are hard limits on payload, form factor, economics, etc. 
+\subsection{Customer Interviews and Requirements Generation}
+Discuss how you conducted your customer interview(s) and the primary feedback and insight you gained during the interview process.  Review the list of customer requirements and how you prioritized them.  Discuss any competing requirements and how you plan to handle these.
 
 \subsection{Functions and Morphological Chart}
-Utilize content from ES401 and update as appropriate if any changes were made. 
+Discuss the functions that were developed during Conceptual Design and provide a description or drawing for each.  Include your Morph Chart(s) and discuss the various options for each function and subsystem as well as how you made your component selections.
+
+\subsection{Decision Matrix and Preliminary Design}
+Include your final decision matrix and a detailed summary of your preliminary design.  Pictures are good here.  Make sure to include callouts and clarifying information for the graphic.
 
 \subsection{Ethical Considerations}
-Briefly discuss ethical issues that impacted your design approach.  Incorporate the \emph{IEEE Code of Ethics} or the \emph{Professional Engineer’s Code} into your discussion when possible. 
+Briefly discuss ethical issues that impacted your design approach.  Incorporate the \emph{IEEE Code of Ethics}\footnote{IEEE Code of Ethics is available online at \url{https://www.ieee.org/about/corporate/governance/p7-8.html}} or the \emph{Professional Engineer’s Code}\footnote{The NSPE Code of Ethics is availble online at \url{https://www.nspe.org/resources/ethics/code-ethics}} into your discussion when possible. 
 
-\subsection{Engineering Analysis or Simulations}
-List and discuss any engineering assumptions used in your analysis.  Discuss the accuracy of your analysis in the context of your assumptions.
-This section could include the development of a mathematical model and/or the use of a model to predict behavior and system performance.  If you used simulation or other computer-aided design tools discuss them here.
- 
+\subsection{Engineering Analysis and Prototype Development}
+List and discuss any engineering assumptions used in your analysis. This section should also include your prototype development or mathematical models used to predict behavior and system performance.  If you used a simulation or other computer-aided design tools, discuss them here. 
+%You could also discuss the accuracy of your analysis in the context of your assumptions. This section could include the development of a mathematical model and/or the use of a model to predict behavior and system performance.  If you used simulation or other computer-aided design tools discuss them here.
+
 \subsection{Component Selection}
-Explain how you selected components of your design, such as actuators, power supplies, computing resources, and sensors—update ES401 material, such as your morph chart, as needed.  
+Explain how you selected components of your design, such as actuators, power supplies, computing resources, and sensors—update EW401 material, such as your morph chart, as needed.  
 
 \subsection{Design Evolution}
 Your final design may not be what you originally planned. If so, discuss this evolution.
+ 
 
 
 
@@ -112,7 +116,7 @@ Your final design may not be what you originally planned. If so, discuss this ev
 Begin with your functional block diagram and a picture of your completed design.   At the very least, present the mechanical, electrical and software sub-systems as shown below.  Consider making additional subsections to present other subsystems.   
 
 \subsection{Mechanical Subsystem}
-This section should discuss the materials used and the dimensions and assembly of all mechanical components. Photos should be annotated, captioned, and referred to within the text (see Figure~\ref{f1}). Simple dimensioned drawings may be included here, but could also be included in the appendix. Hand-drawn engineering sketches are only appropriate for the appendix.
+This section should discuss the materials used and the dimensions and assembly of all mechanical components. Photos should be annotated, captioned, and referred to within the text (see Figure~\ref{f1}). Simple dimensioned drawings may be included here, but could also be included in the appendix. Hand-drawn engineering sketches are only appropriate for the appendix, or in the case of scientific illustrations. Consider use of line art for clarity and especially when compared to low-quality cell phone images with cluttered backgrounds. When using photos, take care to remove distractions in the photo and provide correct lighting so that the photo is clear. 
 \begin{figure}
 \begin{center}
 \includesvg[width=\columnwidth]{figures/f1.svg}
@@ -122,7 +126,7 @@ This section should discuss the materials used and the dimensions and assembly o
 \end{figure}
 
 \subsection{Electrical Subsystem}
-All necessary circuitry, signal conditioning components, power supplies and connections should be detailed.  Circuit diagrams should include component values (e.g. resistance) as shown in Figure~\ref{f2}. Photos should be annotated, captioned, and referenced within the text. Consider placing complex circuit diagrams in the appendix. Hand-drawn circuit diagrams are only appropriate for the appendix.   Include any calibration equations for your sensors or actuators in this section. 
+All necessary circuitry, signal conditioning components, power supplies and connections should be detailed.  Circuit diagrams should include component values (e.g. resistance) as shown in Figure~\ref{f2}. Photos should be annotated, captioned, and referenced within the text. Consider placing complex circuit diagrams in the appendix. Hand-drawn circuit diagrams are only appropriate for the appendix; schematics can be drawn in CAD programs like ExpressPCB and Eagle, or can be coded for \LaTeX\ using the \lstinline{circuitikz} package.   Include any calibration equations for your sensors or actuators in this section. 
 \begin{figure}
 \begin{center}
 \includesvg[width=\columnwidth]{figures/f2.svg}
@@ -154,19 +158,19 @@ Present your control law as an equation or pseudo-code.   See the equation forma
 \mbox{Throttle} = K (V_{des} - V)
 \end{equation}
 
-Justify how you selected its type (e.g.  open loop, bang-bang, proportional, state variable feedback, etc.). Provide values for the gains or coefficients.  Discuss their calculation and any iterative design procedure.  Provide plots, from either simulations or experiments, illustrating its effectiveness.  You can easily create feedback diagrams in Inkscape or Adobe Illustrator.  Resist the impulse to use Word or Powerpoint; the results look like crap. Once draw, include your figures as shown in Figure~\ref{f4}.   You can include Matlab figures as shown in Figure~\ref{f5}.
-\begin{figure}
+Justify how you selected its type (e.g.  open loop, bang-bang, proportional, state variable feedback, etc.). Provide values for the gains or coefficients.  Discuss their calculation and any iterative design procedure.  Provide plots, from either simulations or experiments, illustrating its effectiveness.  You can easily create feedback diagrams in Inkscape or Adobe Illustrator.  Resist the impulse to use Word or Powerpoint; the results look like crap. Once drawn, include your figures as shown in Figure~\ref{f4}.   You can include \Matlab\ figures as shown in Figure~\ref{f5}.
+\begin{figure}[p]
 \begin{center}
-\includesvg[width=\columnwidth]{figures/f4.svg}
+\includesvg[width=0.5\columnwidth]{figures/f4.svg}
 \end{center}
-\caption{Feedback control diagram. Please do not draw your diagrams using Word or Powerpoint artwork; figures done this way look like crap. Instead use a proper a drawing program like Illustrator or Inkscape; Inkscape is free.} 
+\caption{Feedback control diagram. Please do not draw your diagrams using Word or Powerpoint artwork; figures done this way look like crap. Instead use a proper a drawing program like Illustrator or Inkscape; Inkscape is free. Use of scaleable vector graphic (\lstinline{svg}) format allows \LaTeX\ to typeset text within the figure.} 
 \label{f4}
 \end{figure}
-\begin{figure}
+\begin{figure}[p]
 \begin{center}
-\includesvg[width=\columnwidth]{figures/f5.svg}
+\includesvg[width=0.75\columnwidth]{figures/f5.svg}
 \end{center}
-\caption{This is the response of the feedback control law.   Note that it is scaled appropriately to see the interesting features, and annotated.   When importaing Matlab figures, you may need to set the export image size and increase the font size and line width to improve legibility. To make this repeatable, we recommend you include code to make the figure publication-quality when you first generate it; that way you can remake the figure with a minimum of fuss when you inevitably need to make small changes later.}
+\caption{This is the response of the feedback control law.   Note that it is scaled appropriately to see the interesting features, and annotated.   When importaing \Matlab\ figures, you may need to set the export image size and increase the font size and line width to improve legibility. To make this repeatable, we recommend you include code to make the figure publication-quality when you first generate it; that way you can remake the figure with a minimum of fuss when you inevitably need to make small changes later.}
 \label{f5}
 \end{figure}
 
@@ -177,10 +181,10 @@ Justify how you selected its type (e.g.  open loop, bang-bang, proportional, sta
 \section{Results and Analysis}
 
 \subsection{Demonstration Plan}
-This section documents a \textbf{procedure} for verifying the performance of your design including a list of required equipment, a list of all initial settings, controlled conditions and the commanded inputs to your system. If you used a test “course” or other apparatus, include a picture.  Someone should be able to replicate your experiments based on the instructions you provide in this section.  
+This section documents a \textbf{procedure} for verifying the performance of your design including a list of required equipment, a list of all initial settings, controlled conditions and the commanded inputs to your system. If you used a test ``course'' or other apparatus, include a picture.  Someone should be able to replicate your experiments based on the instructions you provide in this section.  
 
 \subsection{Performance Measures}
-Evaluate your design against the performance measure rubrics, (i.e. your metrics) you developed in ES401. Discuss the extent to which you achieved each objective, striving to include \textbf{quantitative analysis} of your system’s performance. Examples include error, speed, settling time, time to set up, usability, etc. Where applicable use appropriate statistical procedures to analyze the data (this should include repeated trials). Use tables or graphs as appropriate to display more detailed results.  
+Evaluate your design against the performance measure rubrics, (i.e. your metrics) you developed in EW401. Discuss the extent to which you achieved each objective, striving to include \textbf{quantitative analysis} of your system’s performance. Examples include error, speed, settling time, time to set up, usability, etc. Where applicable use appropriate statistical procedures to analyze the data (this should include repeated trials). Use tables or graphs as appropriate to display more detailed results.  
 
 Verify that your system satisfies the constraints outlined in the System Design section.
 
@@ -196,12 +200,13 @@ For capstone work involving more than one student, describe the distribution of 
 As appropriate, briefly discuss any new knowledge that the team members acquired or developed over the course of the capstone project. This may include learning new hardware, software, or techniques.
 
 \subsection{Cost analysis and Parts List}
-Include it in tabular form (see the Appendix for tips on inserting tables).  Provide subtotals for parts alone, but also include labor.  You may simply update your ES401 material.
+Include it in tabular form (see the Appendix for tips on inserting tables).  Provide subtotals for parts alone, but also include labor\footnote{The usual way to account for labor in EW401 is by adding a fixed person-day cost for midshipman work. Your advisor may direct you to instead simply tabulate the person-day or person-hour effort so as not to provide artifically and unrealistically inflated cost estimates.}.  You may simply update your EW401 material.
 
 \subsection{Timeline}
-Ideally you would present your original proposed Gantt chart from ES401, followed by the revised version reflecting what actually occurred.   Be sure the font is legible.  At the least, provide a time line of major milestones.
+Ideally you would present your original proposed Gantt chart from EW401, followed by the revised version reflecting what actually occurred.   Be sure the font is legible.  At the least, provide a time line of major milestones.
 
-
+\subsection{Risk Management}
+Include your risk management chart as well as your mitigation strategies for all risks that are either red or yellow.  Were your risks realized?  Did new ones come up?  How did you strategies work out for you?
 
 
 
@@ -209,6 +214,7 @@ Ideally you would present your original proposed Gantt chart from ES401, followe
 
 \section{Discussion and Conclusion}
 Critique your final results. Discuss contributing factors to the strengths and limitations of your design. 
+
 Make recommendations for future midshipmen working on a similar project.
 
 
@@ -221,9 +227,13 @@ Thank everyone that helped you. Acknowledge any sponsors.
 %References
 % If you use bibtex properly you shouldn't have to mess around with formatting t
 % this at all!
+% By default, citations will follow IEEE Transactions format with numbered references, an abbreviated citations in order of appearance in the text; for this reason you do not want to "hard code" these as every time you move citations or add one you will have renumber and reorder everything. 
+% Your advisor may request you to use (author year) format with citations in alphabetical order; this is typical for bio-science work. If you use Bibtex properly you will not have to do much to make this change; mainly swap to e.g. jeb or similar bibtex format and shift to use of \citep and friends rather than \cite.  
 \nocite{*}
 \bibliographystyle{IEEEtran}
 \bibliography{IEEEabrv,example.bib}
+%\bibliographystyle{jeb} % for biology style references
+%\bibliography{example.bib}
 
 
 
@@ -231,10 +241,11 @@ Thank everyone that helped you. Acknowledge any sponsors.
 \appendix
 \section{Formatting and Style Guidelines}\label{app-style}
 Appendices are optional and should appear at the end. You may have several appendices if necessary, to include computer programs, large data sets, or detailed drawings. Be sure to note the existence of any appendices or enclosures within the relevant portion of the report text.  
+
 This appendix provides stylistic guidelines and \LaTeX\ tips on creating linked and cross referenced documents.  
 
 \subsection{Abbreviations and Acronyms}
-Define abbreviations and acronyms the first time they are used in the text, even after they have been defined in the abstract. Abbreviations such as IEEE, SI, MKS, CGS, sc, dc, and rms do not have to be defined. Do not use abbreviations in the title or heads unless they are unavoidable.
+Define abbreviations and acronyms the first time they are used in the text, even after they have been defined in the abstract. Abbreviations such as IEEE, SI, MKS, CGS, ac, dc, and rms do not have to be defined. Do not use abbreviations in the title or heads unless they are unavoidable.
 
 \subsection{Units}
 The use of SI units is encouraged. English units may be used as secondary units (in parentheses). An exception would be the use of English units as identifiers in trade, such as ``3.5-inch disk drive''. Use a zero before decimal points: ``0.25'', not ``.25''. Use ``\si{\centi\meter\cubed}'', not ``cc''. In \LaTeX, you can use the \lstinline{siunitx} package to ensure units are done correctly. 
@@ -284,16 +295,6 @@ Use \lstinline{bibtex}, it's much easier than using the thing built into Word. I
 
 To cite them, within the body of your text use the \lstinline|\cite{refname}| command. \LaTeX\ will automatically sort, number, etc. IEEE formats use a reference number within brackets, e.g. \cite{young1964synthetic}. The format of bibliography references can be changed using the \lstinline|\bibliographystyle| command. You may wish to do so if biology-style (Author, 2018) parenthetical references are more appropriate for your subject, for example. 
 
-%Note that, while Word includes many bibliography-building tools, one of the easiest methods to build a lengthy reference list is to move to the end of your document and start a new list of references formatted as follows:
-%1)  Click on the HOME tab at the top of the Word window
-%2)  In the Paragraph sub-window, click on the down arrow next to the numbered list layout.
-%
-%
-%3)  Click on the format that shows [#], OR, if that format is not available, select “Define New Number Format” from the bottom of the pop-up window.
-%4)  If you had to define a new number format, select the “Number style” as “1, 2, 3, …” and change the “Number format” to [1] by typing the [ and the ] around the 1, and removing any other punctuation, as shown at right.  Select OK when done.
-%5)  Type entries onto the list.  It will automatically update.
-%6)  To cross-reference the list, use the method described above in the section on Figures and Tables.
-%The reference/bibliography standard used in our discipline is published by IEEE, a professional engineering society dedicated to control systems, robotics, electronics, etc.  The following examples are provided in the reference section.  Note: parenthetical descriptions do not need to be included in your reference entries. 
 
 
 
