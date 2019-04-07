@@ -2,11 +2,15 @@
 
 \usepackage{graphicx}
 \usepackage{siunitx}
-\usepackage{amsmath,amsfonts}
+\usepackage{amsmath,amsfonts,amssymb}
+%\usepackage{marginnote} % for editorial use
+\usepackage{sidenotes} % for editorial use
+
 \newcommand{\myroot}{../}
 \newcommand{\Later}{\textbf{Later.}}
 \newcommand{\Calypteanna}{\emph{Calypte anna}}
 \newcommand{\MATLAB}{MATLAB}
+
 
 \title{Autonomous trajectory planning to copy bird-like maneuvers}
 \author{E.~Marcello and D.~Evangelista\thanks{Authors are with the United States Naval Academy, Department of Weapons, Robotics, and Control Engineering}}
@@ -26,7 +30,7 @@ capstone, robotics, controls
 \section{Background and motivation}
 \IEEEPARstart{T}{he origin of this type of research} stems from the desire to solve engineering problems by studying the way that biological organisms overcome a similar problem. As an example, the monocopter is a device that is able to fly using the same aerodynamic principles of the “helicopter” maple seeds. Maple seeds are able to slow their decent to the ground using a particular weight distribution and wing structure to facilitate autorotation. This allows them to be carried by the wind instead of simply falling straight down to the base of the tree, which can be advantageous for the growth of the new maple saplings. Researchers in \cite{who2019maple} developed a monocopter based off of this concept, and were able to develop a control algorithm that allowed them to control the direction of the flying UAV. This design may never have been created if it weren’t for the careful study of the maple seeds and their curious aerodynamic properties. 
 
-On the other hand, sometimes a robot is created for the sake of learning more about a specific type of biological behavior. In \cite{feltman2014creepy}, the strange movement behavior seen by the sidewinder rattlesnake is studied by creating a robot to imitate it. Sidewinders get their name from the way that they seem to travel sideways in a twisting-lurching type fashion across the hot desert sand. The robot was developed like a snake, and was programmed to copy as closely as possible the movement of the sidewinder. The initial test had success on level ground, but no such luck on steeper slopes. It wasn’t until then that the discovery was made that the sidewinder used two independent wavelike motions to move instead of just a single wave. Once this was implemented to the design, the robot was able to navigate just like the sidewinder, and a new form of ground travel was made attainable by robotic machines. This discovery has applications of movement over a variety of different terrain that a typical wheeled robot would have significant trouble with.
+On the other hand, sometimes a robot is created for the sake of learning more about a specific type of biological behavior. In \cite{feltman2014creepy}, the strange movement behavior seen by the sidewinder rattlesnake is studied by creating a robot to imitate it. Sidewinders get their name from the way that they seem to travel sideways in a twisting-lurching type fashion across the hot desert sand. The robot was developed like a snake, and was programmed to copy as closely as possible the movement\sidenote{test} of the sidewinder. The initial test had success on level ground, but no such luck on steeper slopes. It wasn’t until then that the discovery was made that the sidewinder used two independent wavelike motions to move instead of just a single wave. Once this was implemented to the design, the robot was able to navigate just like the sidewinder, and a new form of ground travel was made attainable by robotic machines. This discovery has applications of movement over a variety of different terrain that a typical wheeled robot would have significant trouble with.
 
 In the case of my research, I will be attempting to enhance a quadrotor’s maneuverability by studying the flight patterns and maneuvers of different types of hummingbirds, specifically Anna’s Hummingbirds (\Calypteanna). With the huge influx of research in quadrotor control, it has become apparent, especially in \cite{mellinger2011minimum, greiff2017modelling}, that the next step for the development of autonomous aerial vehicles is extreme maneuverability. Air platforms are becoming increasingly more autonomous, which begs the question, how far can autonomy really take UAVs? From level flight, to obstacle avoidance, path planning and trajectory matching, autonomous vehicles are beginning to show promise of greatly surpassing any human operator in safety and performance. My research seeks to develop an autonomous solution of executing a highly stressful maneuver, specifically to match the flight maneuvers performed by Anna’s Hummingbirds. 
 
@@ -120,5 +124,11 @@ The first step to demonstration will involve the conversion of coding language f
 \appendix
 \section{Gantt Chart}
 \Later\ Insert the Gantt chart here.  Be sure the font is legible.   Crop it tight, use landscape orientation and make it as large as possible.
+
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{\myroot/figures/M203876.jpg}}]{Ethan Marcello} is a midshipman at the United States Naval Academy majoring in Robotics and Control Engineering. Upon graduation, he hopes to service select as into either the pirate/privateer or blimp communities. 
+\end{IEEEbiography}
+
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{\myroot/figures/evangelista_d_prof.jpg}}]{Dennis Evangelista} raises guide dog puppies. 
+\end{IEEEbiography}
 
 \end{document}
