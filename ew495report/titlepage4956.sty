@@ -1,0 +1,51 @@
+\RequirePackage{graphicx}
+
+\newcommand{\thecoursenumber}{EW495 or EW496}
+\newcommand{\coursenumber}[1]{\renewcommand{\thecoursenumber}{#1}}
+
+\newcommand{\theadvisor}{Assistant Professor Indiana Jones}
+\newcommand{\advisor}[1]{\renewcommand{\theadvisor}{#1}}
+
+\newcommand{\thedeptchair}{Professor B. E. Bishop}
+\newcommand{\deptchair}[1]{\renewcommand{\thedeptchair}{#1}}
+
+\newcommand{\thecoverpicture}{\includegraphics[width=0.75\columnwidth]{RCE-logo-01.png}}
+\newcommand{\coverpicture}[1]{\renewcommand{\thecoverpicture}{#1}}
+
+\newcommand{\maketitlepage}{
+\begin{figure*}[p]
+\makeatletter
+\begin{center}
+\noindent \textbf{\thecoursenumber\ Final Report}\\
+\vspace{2em}
+\noindent {\Huge \@title}\\
+\vspace{2em}
+\thecoverpicture\\
+\vspace{2em}
+\noindent \textbf{Author:} \@author\\
+\noindent \textbf{Date:} \@date\\
+\end{center}
+\end{figure*}
+\begin{table*}[p]
+\begin{center}
+\begin{tabular}{p{4in}p{1.5in}}
+\textbf{Advisor:} \theadvisor & \\
+& \\
+& \\
+& \\
+\makebox[4in]{\hrulefill} & \makebox[1.5in]{\hrulefill} \\
+\setlength\extrarowheight{0pt}
+Signature & Date \\
+& \\
+\textbf{Department Chair:} \thedeptchair & \\
+& \\
+& \\
+& \\
+\makebox[4in]{\hrulefill} & \makebox[1.5in]{\hrulefill} \\
+Signature & Date \\
+\end{tabular}
+\end{center}
+\end{table*}
+\clearpage
+\makeatother
+}
