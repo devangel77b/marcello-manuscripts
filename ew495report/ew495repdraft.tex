@@ -1,0 +1,36 @@
+\documentclass[onecolumn,10pt]{IEEEtran}
+
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage{amsmath,amsfonts,amssymb}
+%\usepackage{marginnote} % for editorial use
+\usepackage{sidenotes} % for editorial use
+
+\newcommand{\myroot}{../}
+\newcommand{\Later}{\textbf{Later.}}
+\newcommand{\Calypteanna}{\emph{Calypte anna}}
+\newcommand{\Canna}{\emph{C.~anna}}
+\newcommand{\MATLAB}{MATLAB}
+
+
+\title{Autonomous trajectory planning to copy bird-like maneuvers}
+\author{E.~Marcello and D.~Evangelista\thanks{Authors are with the United States Naval Academy, Department of Weapons, Robotics, and Control Engineering}}
+\date{today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+I propose to use a small indoor quadrotor (Crazyflie 2.1) and a multi-camera tracking system (OptiTrack) to attempt to recreate extreme maneuvers observed in flying animals.  My primary goal will be to recreate courtship display dives in Anna's Hummingbirds (\emph{Calypte anna}). In animals, and especially in species with sexual selection / female choice, extreme maneuers are expected to provide an honest signal of mate quality, e.g. his ability to generate large forces and torques and perform fine control during locomotion, including at high speed; animals also accomplish these in variable environments with varying flow, turbulence, and lighting conditions. Performing such manuevers with unmanned aerial systems is expected to be an engineering challenge that could help provide robotic systems with access to difficult-to-reach places. I propose a  \SI{24}{week} effort including simulation and proof-of-concept demonstrations in hardware. 
+
+%This research proposal seeks to use aggressive quadrotor maneuvering and path planning to fly the same trajectory Anna’s hummingbirds execute during their courtship display dives with a Crazyflie 2.1 quadrotor. Aggressive autonomous maneuvering for quadrotors has been a focused area of study by many researchers over the past several years; however, there have not yet been many attempts at replicating aggressive flight patterns seen in biological species. In being one of the first research topics into flying Anna’s hummingbird dive trajectories with an autonomous platform, this paper aims to discover an advantage to this specific type of maneuver for autonomous aerial vehicles. To execute this task, I will be relying heavily on prior work completed in autonomous control of the Crazyflie quadrotor, utilizing a quaternion model of the quadrotor flight dynamics. Additionally, I will be using previously obtained data for the Anna’s hummingbird flight trajectories. To measure the feasibility of the maneuver I plan to conduct trials both in simulation and in proof of concept demonstration that will compare the trajectory of the quadrotor to the hummingbird flight trajectory using a root mean square error between sampled data points along the trajectory paths. The total projected cost of the project is \SI{28470}[\$] including a cost \SI{370}[\$] in new materials. The timeline estimates project completion in 24 weeks, with the highest risk being my requirement of learning 2 new programming languages, ROS and Python, and possible damage to the Crazyflie quadrotor in the event of a failed maneuver
+\end{abstract}
+
+\begin{IEEEkeywords}
+capstone, robotics, controls
+\end{IEEEkeywords}
+
+
+
+
+\end{document}
