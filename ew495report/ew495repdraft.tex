@@ -54,6 +54,87 @@ As seen in equation~\ref{eq:1}, the sum of the numbers is two. I read this in \c
 \label{fig:otto}
 \end{figure}
 
+\section{Materials and Methods}
+To demonstrate the objective of replicating \Canna\ display dives,  I will simulate the system in \MATLAB\ and Simulink.  This will be followed up with a proof-of-concept demonstration, provided I am able to achieve successful trials in simulation first. The simulation will be more general and will allow easy changing of parameters and control methods to more completely explore the space; simulations will also allow examination of behavior at actual hummingbird flight speeds. Simulations, by necessity, make simplifying assumptions, so actual testing and demonstration using real quadrotors is also planned.  
+% This part is way too wordy and non-sequitur. 
+%Before I describe these processes, it is important to mention why these are the methods I chose to implement. A simulation is general in that I can run the simulation for many iterations to see how the controller will react to different input parameters. The input parameters themselves are very specific; however, the ability to change parameter values will allow me to assess the full capabilities of the quadrotor system to determine if I can eliminate the need to do a time-scaled comparison to the hummingbird trajectory. The simulation will be coded using MATLAB and Simulink, both are software with which I have the most experience in creating simulations. My simulation code will be made available after the completion to this project on Git for those wishing to replicate my simulated results. Unfortunately, the realism of this simulation is limited, and as a result I will have to do a proof-of-concept demonstration to truly prove the ability of the quadrotor. Being a much more specific process, it will likely vary slightly from the simulation results, and need to be tweaked based on the level of success seen in the first few trials. Ultimately, the proof-of-concept demonstration is an essential piece to this research since a simulation doesn’t have any real world application except in principle. The experiment will enlist the use of a Crazyflie quadrotor platform, and an OptiTrack motion capture system in order to gather position vs. time data. This will help ensure accuracy in the quadrotor’s trajectory and as such, provide a higher level of confidence in the experiment’s success.
+
+
+%Will replace this with proper rigid body dynamics discussion
+For my concept demonstrations, I will be modeling the rigid body dynamics of the quadrotor using the quaternion model in \cite{greiff2017modeling}. A quaternion is defined as 
+\begin{equation}
+Q = a + b i + c j + d k
+\end{equation}
+where $i$, $j$, and $k$ are imaginary unit vectors. This model also assumes a right-handed coordinate system where $i\cdot j = k$ , and the fundamental assumptions hold true -- i.e.  $i^2 = j^2 = k^2 = ijk = -1$.  I have chosen to use this model due to the limitations of the Euler model at high rotation angles. The quaternion model will be robust to these extreme angles, and is therefore better suited for my experiment. \emph{\textbf{Evangelista comment here: this is sort of strange to mention here. It's like saying I plan to use math, or matrices, or eigenvalues. Choosing to represent rotations as quaternions is a useful thing for avoiding gimbal lock associated with singularities in the Euler angle representation, but would not be considered a defining characteristic of what you plan to do, more like a low level design choice comparable to what units you use, or if you like floats or doubles.}}
+
+Early trials will use a PID controller for 3D position control that assumes the "hover" condition of pitch and roll angles of zero, while instituding basic saturation limits on the pitch and roll angles that can be commanded so that the quadrotor will not request an attitude command that causes it to fall rapidly and crash.
+
+
+\subsection{Simulation}
+To create a feasible simulation for this research, I will model the Crazyflie quadrotor platform to be used in simulation. This involves determining the various thrust vectors of the motors, and the calculation of many performance metrics. Thankfully, much of this work has already been done, and I will be relying heavily on the work in \cite{cheng2016flight} as well as data from the bitcraze website resources 
+%\cite{bitcrazeRef} 
+to create a useful model for the quadrotor in \MATLAB\ and Simulink. Due to the extreme maneuvering of the quadrotor, I have chosen to use a quaternion coordinate system to describe its position, for flight control purposes only. The trajectory comparison will be conducted in the $x$, $y$, $z$ Cartesian coordinate frame. A quaternion is defined as a vector of one real and three imaginary vector directions, $i$, $j$, and $k$. Once this has been accomplished, I will obtain and upload Anna’s Hummingbird flight trajectories into \MATLAB. These will serve as truth, or the desired trajectories for my simulation to attempt to run through. Once this is complete, I will develop, or obtain from another source, a path-planning flight controller algorithm that is able to take in a desired flight path and create an appropriate response to fly this desired flight path with minimal error. The feedback diagram of this control concept is shown below in \fref{fig:demonstration-2}. In principle, a desired trajectory will be developed from a path-planning algorithm that takes in the time scaled hummingbird trajectory and calculates the idealized pitch and motor torque and speed at each time step in order to fit this trajectory with as little error as possible. This signal will be combined with some sort of inertial measurement true position feedback to produce the error signal to the onboard flight controller. The flight controller will send a signal to the motors on the quadrotor based on this error signal to come as close as possible to zero error for the next time step, and the cycle will repeat until the quadrotor has completed its maneuver. My simulation will replicate this decision-making process using numerical integration to obtain the position data for every iteration.
+\begin{figure}
+\begin{center}
+\includegraphics[width=\columnwidth]{\myroot/figures/demonstration-2.png}
+\end{center}
+\caption{Functional Block Diagram of the controller feedback loop. \emph{\textbf{Evangelista comment: not sure what is shown here. There's an IMU related loop onboard the vehicle, and an outer loop driven by the OptiTrack and your controller offboard; I only see the inner loop here.}}}
+\label{fig:demonstration-2}
+\end{figure}
+
+Finally, to determine accuracy of the trial I will compare the actual flight path of the quadrotor with the desired flight path, and determine a time-scaled root mean square error between the two position vs time datasets. This error will be calculated using \fref{eq:demonstration-1} below:
+\begin{equation}
+e(t) = \sqrt{
+\begin{bmatrix}
+x(t) \\ y(t) \\ z(t)
+\end{bmatrix}_a^2 
+-
+\begin{bmatrix}
+x(t) \\ y(t) \\ z(t)
+\end{bmatrix}_d^2
+}
+\label{eq:demonstration-1}
+\end{equation}
+where $e(t)$ is the error at a specific time step in the trajectory, all operators are considered element-by-element matrix operations, and the subscripts $a$ and $d$ represent the actual traveled trajectory and the desired trajectory respectively. The error for every time step will be averaged together to determine the root mean square error of the data in the form of a \num{3x1} matrix. The magnitude of this matrix will be the official value for the root mean square error. Without any other indications, a successful trial will be considered a root mean square error of less than ten centimeters over the entire trajectory. Since the hummingbird trajectory is time-scaled—down to only a fraction of its true speed—the quadrotor will be responsible for marking every position at the time it is supposed to be located at that position, therefore removing motor operation constraints as a possible source of error.
+
+If I am able to accomplish a working simulation with the Anna’s Hummingbird courtship dive maneuver, I will try to make the simulation slightly more general so it can apply to a wide variety of hummingbird dives and maneuvers. This can include evasive maneuvers, and potentially other types of stunts.
+
+
+
+
+
+
+\subsection{Experimental work}
+	Provided that the simulation is able to achieve several successful runs, a proof of concept demonstration will be deemed necessary for further analysis into the possibility of actually autonomously flying a drone through hummingbird flight trajectories. The hardware components necessary for this experiment include a fully functional Crazyflie quadrotor (Bitcraze, Malm\"{o}, Sweden), and an OptiTrack system (NaturalPoint Inc., Corvallis, OR). The quadrotor will be the object of the experiment, and the OptiTrack system is a highly accurate way to obtain position data for the Crazyflie in flight using visual information from nearly 20 cameras staged around the outside of the testing area. Experimentation will be conducted indoors for the initial trials to minimize any aerodynamic noise \emph{\textbf{(Evangelista comment: but being able to do this in noise is of interest?)}}. There is a distant possibility to moving into an outdoor environment if early testing shows signs of having promising results. I will need several batteries for the Crazyflie to ensure sufficient trial and testing periods, and I will also need to attach approximately five OptiTrack visual markers on the Crazyflie drone to ensure that it is able to be detected by the OptiTrack system. These marker additions will be taken into account in simulation first in order to ensure readiness to counteract any effect they may have on the dynamics of the quadrotor in the feedback loop.
+	
+The first step to demonstration will involve the conversion of coding language from \MATLAB, used for the simulation, to Python\footnote{Evangelista comment: why not start in Python?}. Python will be used to implement the path-planning control algorithm on the Crazyflie. To fly the trajectory, the quadrotor system will follow the feedback loop portrayed in \fref{fig:demonstration-2} above. When the quadrotor is ready to fly the trajectory, the OptiTrack system will obtain the position vs. time information of the Crazyflie using visual sensor data, accurate to $\approx \SI{1}{\milli\meter}$. This data will be compared to the desired hummingbird trajectory in post-processing to determine the flight accuracy, just as in the simulation.
+
+%\subsection{Property measurement}
+\subsection{Technical risks and mitigation}
+It is possible that the Crazyflie quadrotor will crash during experimental testing. The risks to damage on the quadrotor will be mitigated by 3D printing propeller guards to prevent hardware damage on unintended impact.
+
+\emph{\textbf{Here refer to Canlas 2019 experience. Canlas has been attempting to fly patterns using legacy Crazyflie 2.0 hardware. He has been plagued by the cumulative damage that happens each time a device takes a hard landing. Mitigate in two potential ways: early obtaining replacement hardware and potential to switch to an alternate platform (DJI Tello) as used by Cuniff (2019) and potentially by Credle (2020). }}
+
+\subsection{Time risks and mitigation}
+Learning ROS will be the most time-intensive part of this project, as well as finding/developing  a suitable control algorithim that will allow my quadrotor to fly the necessary trajectories. 
+
+\emph{\textbf{This is the first mention of ROS. Also, ROS is very slow most useful for the slow position path planning autonomy that you dumped on in your intro. It is not expected to be fast enough for the most dynamic maneuvers?}}
+
+\subsection{Justification of high risk activities}
+In order for this research to be conducted successfully, I will likely need to learn ROS programming language, and re-familiarize myself with Linux shell. This will likely delay work for \numrange{1}{3} months while I learn these new computer languages; however it is a necessary step in making full use of the Crazyflie developmental platform, and being able to communicate between it and the OptiTrack system.
+
+\subsection{Budget}
+\emph{\textbf{Please add the following disclaimer: ``Labor and overhead costs are estimated only for EW502 training purposes and do not actually reflect real costs that would be supported by project sponsors.''}}
+
+\emph{\textbf{Your budget as presented in your pitch and proposal ought to give some indication what you are considering as in stock versus new items. For example, you plan to leverage the presence of OptiTrack system and of gear from what Canlas has leftover, and from School of Drones. You are getting some new stuff ahead of time but probably (given risk mitigation) ought to put in to get more in future as you break more stuff. There is no incentive here to make this look small - make it look realistic so I can use it to find more money to buy stuff and maybe explicitly add 20-50\% margin too. }}
+
+\begin{table}[hb]
+\caption{Budget}
+\label{table-budget}
+\end{table}
+
+I will be purchasing a new Crazyflie 2.1 since many of the Crazyflies that we own have been crashed multiple times and have potentially lost functionality I will need for my highly precise and aggressive maneuvering.
+
 
 \bibliography{\myroot/references/marcello}
 \end{document}
