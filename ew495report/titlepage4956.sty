@@ -3,6 +3,9 @@
 \newcommand{\thecoursenumber}{EW495 or EW496}
 \newcommand{\coursenumber}[1]{\renewcommand{\thecoursenumber}{#1}}
 
+\newcommand{\thestudent}{MIDN 1/c Student}
+\newcommand{\student}[1]{\renewcommand{\thestudent}{#1}}
+
 \newcommand{\theadvisor}{Assistant Professor Indiana Jones}
 \newcommand{\advisor}[1]{\renewcommand{\theadvisor}{#1}}
 
@@ -16,20 +19,20 @@
 \begin{figure*}[p]
 \makeatletter
 \begin{center}
-\noindent \textbf{\thecoursenumber\ Final Report}\\
-\vspace{2em}
 \noindent {\Huge \@title}\\
+\vspace{2em}
+\noindent \textbf{\thecoursenumber\ Final Report}\\
 \vspace{2em}
 \thecoverpicture\\
 \vspace{2em}
-\noindent \textbf{Author:} \@author\\
+\noindent \textbf{Author:} \thestudent\\
 \noindent \textbf{Date:} \@date\\
 \end{center}
 \end{figure*}
 \begin{table*}[p]
 \begin{center}
 \begin{tabular}{p{4in}p{1.5in}}
-\textbf{Advisor:} \theadvisor & \\
+\textbf{Adviser:} \theadvisor & \\
 & \\
 & \\
 & \\
