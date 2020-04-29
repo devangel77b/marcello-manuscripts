@@ -254,15 +254,24 @@ The next step towards a full hardware demonstration was to test autonomous contr
 \section{Results}
 \subsection{Initial simulations of bio-inspired dive pullout maneuvers in \Matlab}
 %if possible, add a sub-sub section for results
-Using the modeling framework of \cite{hartman2014quadcopter}, 3 trials were run at varying speed reductions: a trial run at one fifth the hummingbird trajectory's speed, a trial at one tenth speed, and a trial at one twentieth speed relative to the full scale, full speed trajectories in \cite{clark2009courtship}. The results of those tests are shown in \fref{fig:onefifthspeed},~\fref{fig:onetenthspeed}, and~\fref{fig:onetwentiethspeed}. Distance error calculations for the three trials are shown in \fref{tab:RMSE}. 
-%reference the 3 trajectory path figures from one fifth to one twentieth
+Using the modeling framework of \cite{hartman2014quadcopter}, 4 trials were run at varying speed reductions: a trial run at the actual hummingbird trajectory's speed, a trial at one fifth the hummingbird trajectory's speed, a trial at one tenth speed, and a trial at one twentieth speed relative to the full scale, full speed trajectories in \cite{clark2009courtship}. The results of those tests are shown in \fref{fig:actualspeed},~\fref{fig:onefifthspeed},~\fref{fig:onetenthspeed}, and~\fref{fig:onetwentiethspeed}. Distance error calculations for the three trials are shown in \fref{tab:RMSE}. 
+%reference the 4 trajectory path figures from actual speed to one twentieth
 
-For these experiments, the attitude angle command saturation limits were increased to $\pm\ang{25}$ to allow for larger command inputs to hopefully facilitate a slightly faster response. The simulated quadrotor was able to follow the one twentieth speed reduction the closest, and had the smallest RMSE, while the trial at one fifth the speed was incredibly behind the desired trajectory path.
+For these experiments, the attitude angle command saturation limits were increased to $\pm\ang{45}$ to allow for larger command inputs to take advantage of a wider range of pitch angles. The simulated quadrotor was able to follow the one twentieth speed reduction the closest, and had the smallest RMSE, while the trial at one fifth the speed was incredibly behind the desired trajectory path. The trial at normal speed showed how inferior this control method is at executing high-speed extreme maneuvers, as the quadrotor was barely able to begin accelerating by the time the simulation called for the quadrotor to be completing the trajectory.
 
-%Figures here!!!! (3) with captions
+%These figures aren't showing up in subsection A like I want them to.....
+%Figures here!!!! (4) with captions
 \begin{figure}[p]
 \begin{center}
-\includegraphics[width=0.6\columnwidth]{\myroot/figures/2D_traj_5x.png}
+\includegraphics[width=0.6\columnwidth]{\myroot/figures/traj_1x.png}
+\end{center}
+\caption{Crazyflie attempted trajectory flight of the hummingbird trajectory at its actual speed.}
+\label{fig:actualspeed}
+\end{figure}
+
+\begin{figure}[p]
+\begin{center}
+\includegraphics[width=0.6\columnwidth]{\myroot/figures/traj_5x.png}
 \end{center}
 \caption{Crazyflie attempted trajectory flight of the hummingbird trajectory at one fifth its actual speed.}
 \label{fig:onefifthspeed}
@@ -270,7 +279,7 @@ For these experiments, the attitude angle command saturation limits were increas
 
 \begin{figure}[p]
 \begin{center}
-\includegraphics[width=0.6\columnwidth]{\myroot/figures/2D_traj_10x.png}
+\includegraphics[width=0.6\columnwidth]{\myroot/figures/traj_10x.png}
 \end{center}
 \caption{Crazyflie attempted trajectory flight of the hummingbird trajectory at one tenth its actual speed.}
 \label{fig:onetenthspeed}
@@ -278,7 +287,7 @@ For these experiments, the attitude angle command saturation limits were increas
 
 \begin{figure}[p]
 \begin{center}
-\includegraphics[width=0.6\columnwidth]{\myroot/figures/2D_traj_20x.png}
+\includegraphics[width=0.6\columnwidth]{\myroot/figures/traj_20x.png}
 \end{center}
 \caption{Crazyflie attempted trajectory flight of the hummingbird trajectory at one twentieth its actual speed.}
 \label{fig:onetwentiethspeed}
@@ -294,6 +303,7 @@ For these experiments, the attitude angle command saturation limits were increas
 \toprule
 trial & $\bar{x}, \si{\meter}$ & $\sigma_x, \si{\meter}$ & $\max(x), \si{\meter}$  \\ %want absolute value bars or cap X to indicate a multi-dimension magnitude error and not only in the x direction
 \midrule
+1 & 6.6888 & 4.3926 & 13.5984 \\
 1/5 & 3.9415 & 1.8710 & 6.3231 \\
 1/10 & 2.1757 & 0.7700 & 2.9967 \\
 1/20 & 1.0443 & 0.3328 & 1.3603 \\
@@ -306,6 +316,32 @@ trial & $\bar{x}, \si{\meter}$ & $\sigma_x, \si{\meter}$ & $\max(x), \si{\meter}
 \subsection{Improved control simulations of bio-inspired dive pullout maneuvers in \Matlab}
 
 % INCLUDE ALL NEW FIGURES AND ANY TABLES!!!
+%Improved control Figures here!!!! (3) with captions
+
+\begin{figure}[p]
+\begin{center}
+\includegraphics[width=0.6\columnwidth]{\myroot/figures/ic_traj_5x.png}
+\end{center}
+\caption{Crazyflie attempted trajectory flight of the hummingbird trajectory at one fifth its actual speed, with improved control provided by manual control tuning.}
+\label{fig:iconefifthspeed}
+\end{figure}
+
+\begin{figure}[p]
+\begin{center}
+\includegraphics[width=0.6\columnwidth]{\myroot/figures/ic_traj_10x.png}
+\end{center}
+\caption{Crazyflie attempted trajectory flight of the hummingbird trajectory at one tenth its actual speed, with improved control provided by manual control tuning.}
+\label{fig:iconetenthspeed}
+\end{figure}
+
+\begin{figure}[p]
+\begin{center}
+\includegraphics[width=0.6\columnwidth]{\myroot/figures/ic_traj_20x.png}
+\end{center}
+\caption{Crazyflie attempted trajectory flight of the hummingbird trajectory at one twentieth its actual speed, with improved control provided by manual control tuning.}
+\label{fig:iconetwentiethspeed}
+\end{figure}
+
 
 \subsection{Initial hardware testing of Crazyflie manual control and OptiTrack tracking and pose estimation}
 Initial hardware testing for flying the Crazyflie and obtaining automatic 3D position tracking data via the OptiTrack was successful, as shown in \fref{fig:manualFlight}. In general, the next step would be to upgrade from manual flight of the Crazyflie to autonomous flight.
