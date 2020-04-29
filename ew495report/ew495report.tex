@@ -259,10 +259,10 @@ The next step towards a full hardware demonstration was to test autonomous contr
 \section{Results}
 \subsection{Initial simulations of bio-inspired dive pullout maneuvers in \Matlab}
 %if possible, add a sub-sub section for results
-Using the modeling framework of \cite{hartman2014quadcopter}, 4 trials were run at varying speed reductions: a trial run at the actual hummingbird trajectory's speed, a trial at one fifth the hummingbird trajectory's speed, a trial at one tenth speed, and a trial at one twentieth speed relative to the full scale, full speed trajectories in \cite{clark2009courtship}. The results of those tests are shown in \fref{fig:actualspeed},~\fref{fig:onefifthspeed},~\fref{fig:onetenthspeed}, and~\fref{fig:onetwentiethspeed}. Distance error calculations for the three trials are shown in \fref{tab:RMSE}. 
+Using the modeling framework of \cite{hartman2014quadcopter}, 4 trials were run at varying speed reductions: a trial run at the actual hummingbird trajectory's speed, a trial at one fifth the hummingbird trajectory's speed, a trial at one tenth speed, and a trial at one twentieth speed relative to the full scale, full speed trajectories in \cite{clark2009courtship}. The results of those tests are shown in \fref{fig:actualspeed},~\fref{fig:onefifthspeed},~\fref{fig:onetenthspeed}, and~\fref{fig:onetwentiethspeed}. Distance error calculations for the four trials are shown in \fref{tab:RMSE}. 
 %reference the 4 trajectory path figures from actual speed to one twentieth
 
-For these experiments, the attitude angle command saturation limits were increased to $\pm\ang{45}$ to allow for larger command inputs to take advantage of a wider range of pitch angles. The simulated quadrotor was able to follow the one twentieth speed reduction the closest, and had the smallest RMSE, while the trial at one fifth the speed was incredibly behind the desired trajectory path. The trial at normal speed showed how inferior this control method is at executing high-speed extreme maneuvers, as the quadrotor was barely able to begin accelerating by the time the simulation called for the quadrotor to be completing the trajectory.
+For these experiments, the attitude angle command saturation limits were increased to $\pm\ang{45}$ to allow for larger command inputs to take advantage of a wider range of pitch angles. The simulated quadrotor was able to follow the one twentieth speed reduction the closest, and had the smallest RMSE, while the trial at one fifth the speed was incredibly behind the desired trajectory path. The trial at normal speed showed how inferior this control method is at executing high-speed extreme maneuvers, as the quadrotor was barely able to begin accelerating by the time the simulation called for the quadrotor to be completing the trajectory. As such, further experimentation with this controller at actual speed was discontinued, as it seems more relevant to focus on improving the control at slower speeds first before attempting improvment at full speed.
 
 %These figures aren't showing up in subsection A like I want them to.....
 %Figures here!!!! (4) with captions
@@ -299,14 +299,15 @@ For these experiments, the attitude angle command saturation limits were increas
 \end{figure}
 
 %why is this so not in the right place
+%It also should be LARGER if at all possible. It's kind of tiny which makes it difficult to read
 \begin{table}[hb]
-\caption{Distance error calculations for each trial (one fifth speed, one tenth speed, and one twentieth speed).}
+\caption{Distance error calculations for each trial (actual speed, one fifth speed, one tenth speed, and one twentieth speed). Position error is represented by the variable $e_p$}
 \label{tab:RMSE}
 \begin{center}
 %\includegraphics[width=0.6\columnwidth]{\myroot/figures/RMSEtable.png}
 \begin{tabular}{cccc}
 \toprule
-trial & $\bar{x}, \si{\meter}$ & $\sigma_x, \si{\meter}$ & $\max(x), \si{\meter}$  \\ %want absolute value bars or cap X to indicate a multi-dimension magnitude error and not only in the x direction
+Trial & $\bar{e_p}, \si{\meter}$ & $\sigma_{e_p}, \si{\meter}$ & $\max(e_p), \si{\meter}$  \\ %want absolute value bars or cap X to indicate a multi-dimension magnitude error and not only in the x direction
 \midrule
 1 & 6.6888 & 4.3926 & 13.5984 \\
 1/5 & 3.9415 & 1.8710 & 6.3231 \\
@@ -319,6 +320,8 @@ trial & $\bar{x}, \si{\meter}$ & $\sigma_x, \si{\meter}$ & $\max(x), \si{\meter}
 
 % THE FOLLOWING IS NEW WORK DONE  ON GAIN TUNING AND RESULTING ERROR IMPROVEMENTS
 \subsection{Improved control simulations of bio-inspired dive pullout maneuvers in \Matlab}
+
+As discussed in the Methods section, several different attempts were made at improving the control of the quadrotor. The only method that proved successful enough to show meaningful visual results was the manual gain tuning. The results of which, for trials at one fifth speed, one tenth speed, and one twentieth speed, are compiled into the three figures shown below (\fref{fig:iconefifthspeed},~\fref{fig:iconetenthspeed}, and~\fref{fig:iconetwentiethspeed}). The results of marginal analysis at each speed trial are displayed in \fref{tab:marginalanalysis}.
 
 % INCLUDE ALL NEW FIGURES AND ANY TABLES!!!
 %Improved control Figures here!!!! (3) with captions
@@ -347,9 +350,26 @@ trial & $\bar{x}, \si{\meter}$ & $\sigma_x, \si{\meter}$ & $\max(x), \si{\meter}
 \label{fig:iconetwentiethspeed}
 \end{figure}
 
+\begin{table}[hb]
+\caption{Marginal analysis of control gain tuning for each trial (actual speed, one fifth speed, one tenth speed, and one twentieth speed). Each row shows which gain reduced the root mean square error the most, the percentage change in that gain to achieve this result, and the percent change in the root mean square error that resulted from making that change.}
+\label{tab:marginalanalysis}
+\begin{center}
+\begin{tabular}{cccc}
+\toprule
+Trial & Gain & $\Delta , \%$ & $\Delta \bar{e_p}, \%$  \\ %want absolute value bars or cap X to indicate a multi-dimension magnitude error and not only in the x direction
+\midrule
+1 & $K_{px}$ & $+5$ & $-1.266$ \\
+1/5 & $K_{p\theta}$ & $-5$ & $-2.201$ \\
+1/10 & $K_{pz}$ & $+5$ & $-1.188$ \\
+1/20 & - & - & - \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{table}
+
 
 \subsection{Initial hardware testing of Crazyflie manual control and OptiTrack tracking and pose estimation}
-Initial hardware testing for flying the Crazyflie and obtaining automatic 3D position tracking data via the OptiTrack was successful, as shown in \fref{fig:manualFlight}. In general, the next step would be to upgrade from manual flight of the Crazyflie to autonomous flight.
+Initial hardware testing for flying the Crazyflie and obtaining automatic 3D position tracking data via the OptiTrack was successful, as shown in \fref{fig:manualFlight}. In general, the next step would be to upgrade from manual flight of the Crazyflie to autonomous flight, as discussed in the Methods section. Due to the abrupt and unexpected inaccessibility of lab equipment, I was also unable to record data for the waypoint-hover flight demos to display in this report.
 \begin{figure}
 \begin{center}
 \includegraphics[width=0.6\columnwidth]{\myroot/figures/3DCfOptiTrackSample.png}
