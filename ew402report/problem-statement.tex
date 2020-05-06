@@ -1,0 +1,16 @@
+\section{Problem statement}
+I aim to execute aggressive maneuvers similar to the display dives of male Anna’s Hummingbirds (\Calypteanna) with an autonomous quadrotor platform. 
+
+My project assumes the following are provided: a quadrotor and  flight controller (e.g. Crazyflie 2.1, Bitcraze, Malm\"{o}, Sweden), and a method of obtaining three-dimensional (3D) position data of the quadrotor in test flights (e.g. OptiTrack, NaturalPoint Inc., Corvalis, OR). Example trajectories obtained from live hummingbirds will be obtained from \cite{clark2009courtship}.  Given a desired hummingbird flight trajectory, depicted in \fref{fig:problem-statement-1}a, the system will autonomously generate and execute the control inputs required to successfully complete the maneuver. 
+
+A successful maneuver is defined as a root mean square error (RMSE) calculation of less than \SI{10}{cm} between the time-scaled hummingbird trajectory and the quadrotor trajectory, with a standard deviation $\sigma$ of \SI{5}{cm} over the entire dataset. The RMSE will be calculated between the $x$, $y$, $z$ position data for each pair of data points that share the same time value, $t$. The hummingbird trajectory will be scaled by a constant factor in time to allow for the physical limitations of the quadrotor--e.g. the quadrotor may only have to travel the desired trajectory at half the speed of the hummingbird to still achieve a successful maneuver. The hummingbird trajectory will also be geometrically dilated to a smaller overall trajectory path in order to physically fit the trajectory inside the available lab space. These are necessary adaptations due to the impressive speed and acceleration capabilities of the Anna’s hummingbirds relative to their size \cite{clark2009courtship}, and of course the physical size constraints of the Maury 201 labroom. 
+\begin{figure}[h]
+\begin{center}
+\includegraphics[height=1.88in]{\myroot/figures/problem-statement-1a.png}%
+\includegraphics[height=1.88in]{\myroot/figures/problem-statement-1b.png}
+\end{center}
+\caption{(a) The five stages of an Anna’s Hummingbird dive maneuver, from \cite{clark2009courtship}. (b) A quadrotor using path planning to fly through a thrown hoop, from \cite{mellinger2011minimum}.}
+\label{fig:problem-statement-1}
+\end{figure}
+
+As a stretch goal, I will also analyze and replicate a variety of different types of hummingbird dives and maneuvers, to include evasive aerial maneuvers \cite{sholtis2015field, cheng2016flight}. Success will be determined in the same fashion as described above.

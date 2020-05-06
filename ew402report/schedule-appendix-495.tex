@@ -1,0 +1,69 @@
+\section{Timeline}
+\label{sec:appA}
+
+\begin{enumerate}
+\item \textbf{Add Item 0. Get turnover from Canlas, Cuniff, exercise stuff to know we can fly, can talk to optitrack, and that you have a laptop available with all software planned to be used.}
+
+\item Simulation
+\begin{enumerate}
+\item Familiarize myself with simulation capabilities.
+\begin{enumerate}
+\item Test all demos (1 week)
+ \item Adapt some variables to see how the simulated results respond (1 week)
+\item Upload model of the Crazyflie quadrotor to the simulation to be used for accurate simulation data. (1-3 days) 
+\end{enumerate}
+
+\item Create a desired path for the Crazyflies to fly.
+\begin{enumerate}
+\item Choose 3 different desired flight shapes and adapt simulation code to take them in as the desired flight path for the quadrotor. (1 week)
+\item Run simulation tests and error calculations. Debug any issues with simulation. (1-2 weeks)
+\item Plot all position, velocity, and accelerations vs. time (both linear and rotational on all 3 axis). (1-2 days)
+\end{enumerate}
+
+\item Test hummingbird trajectories in simulation.
+\begin{enumerate}
+\item Upload hummingbird dive trajectories into simulation. (3 days)
+ \item Run simulation and plot position, velocity, and acceleration data vs. time for all 3 axes in both the linear and rotational frames. (2 days)
+\item Conduct error calculations between the desired trajectory and the simulated trajectory of the quadrotor. (1 week)
+\item Determine acceptable region of error, and determine a maximum theoretical performance for the quadrotor as a measure of how fast the quadrotor is able to complete the maneuver as compared to the hummingbird. (1 week)
+\end{enumerate}
+\end{enumerate}
+ 
+\item Proof of Concept Demonstration
+\begin{enumerate}
+\item Purchase new Crazyflie and supporting materials
+\begin{enumerate}
+\item Create online shopping cart pdf of all materials: Crazyflie, extra blades, extra battery, more OptiTrack markers, etc. (3 days)
+\item Create RQ forms and ITPR forms (\textbf{Marcello}\footnote{I've done the first ones as examples for you. You're doing all the others.}) (1 week).
+\end{enumerate}
+
+\item Obtain manual control of a Crazyflie with remote control.
+\begin{enumerate}
+\item Configure Crazyradio and obtain positive connection to the Crazyflie using Crazyflie PC client software. (1-2 days)
+\item Connect controller to laptop and configure manual controls to Mode 2 (1 day)
+\item Conduct takeoff/landing procedures. (1 day)
+\item Fly a rough 3D pattern using manual control. (1 day)
+\end{enumerate}
+
+\item Obtain flight data using OptiTrack
+\begin{enumerate}
+\item Set up OptiTrack system to recognize Crazyflie as a rigid body. (3 days)
+\item Run sample code to log flight data. (3 days)
+\item Manually fly the Crazyflie and obtain flight data. (3 days)
+\item Plot position, velocity, and acceleration data vs. time for all 3 axes in both the linear and rotational frames in \MATLAB. (3 days)
+\end{enumerate}
+
+\item Fly the Crazyflie Autonomously
+\begin{enumerate}
+\item Read about ROS and develop python proficiency (4 months, concurrent)
+\item Develop/Utilize currently existing control algorithm architecture to autonomously control the Crazyflie through the input of specified waypoints with associated position, velocity, and (orientation?) information. (1-3 weeks)
+\item Execute autonomous control and collect flight data using OptiTrack (1 week)
+\item Plot position, velocity, and acceleration data vs. time for all 3 axes in both the linear and rotational frames in \MATLAB. (3 days)
+\item Conduct error calculations between the desired trajectory and the actual flight trajectory data collected from the OptiTrack system. (1 week)
+\item Present experimental findings (1 month).
+\end{enumerate}
+
+\end{enumerate}
+\end{enumerate}
+
+Total estimated time to completion: \SI{24}{weeks}.

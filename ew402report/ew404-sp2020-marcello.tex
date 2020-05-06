@@ -1,0 +1,142 @@
+\documentclass[onecolumn,10pt]{IEEEtran}
+
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{graphicx}
+%\usepackage{marginnote} % for editorial use
+\usepackage{sidenotes} % for editorial use
+\usepackage[dvipsnames,svgnames]{xcolor}
+\usepackage{svg,svg-extract}
+\usepackage{booktabs}
+
+\usepackage{siunitx}
+\DeclareSIUnit\foot{ft}
+\DeclareSIUnit\pound{lb}
+\DeclareSIUnit\ounce{oz}
+\DeclareSIUnit\inch{in}
+\DeclareSIUnit\rpm{rpm}
+\DeclareSIUnit\fahrenheit{F}
+\DeclareSIUnit\bit{bit}
+\DeclareSIUnit\byte{B}
+
+\newcommand{\myroot}{../}
+\newcommand{\Later}{\textbf{Later.}}
+\newcommand{\Calypteanna}{\emph{Calypte anna}}
+\newcommand{\Canna}{\emph{C.~anna}}
+\newcommand{\MATLAB}{Matlab}
+\newcommand{\Matlab}{Matlab}
+
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=violet,
+  urlcolor=blue,
+  citecolor=blue}
+
+\usepackage[plain]{fancyref}
+\renewcommand{\freffigname}{Fig.}
+\renewcommand{\Freffigname}{Fig.} 
+\renewcommand{\freftabname}{Table}
+\renewcommand{\Freftabname}{Table}
+\frefformat{plain}{\fancyrefeqlabelprefix}{(#1)} 
+\Frefformat{plain}{\fancyrefeqlabelprefix}{(#1)} 
+
+\usepackage{listings}
+\lstset{
+	basicstyle=\ttfamily,
+	columns=fullflexible,
+	showstringspaces=false
+}
+\lstdefinestyle{mbedC}{
+	language=C,
+	basicstyle=\ttfamily,
+	keywordstyle=\color{blue}\ttfamily,
+	stringstyle=\color{magenta}\ttfamily,
+	commentstyle=\color{green}\ttfamily,
+	directivestyle=\color{red}\ttfamily,
+ 	morecomment=[l][\color{red}]{\#},
+	columns=fullflexible,
+	showstringspaces=false,
+%	frame=single
+}
+\lstdefinestyle{usnaMatlab}{
+	basicstyle=\ttfamily,
+	keywordstyle=\color{blue}\ttfamily,
+	stringstyle=\color{magenta}\ttfamily,
+	commentstyle=\color{green}\ttfamily,
+ 	morecomment=[l][\color{red}]{\#},
+	columns=fullflexible,
+	showstringspaces=false,
+	language=Matlab
+%	%backgroundcolor=\color{lightgray},
+%	frame=single
+}
+
+
+\title{Autonomous trajectory planning to execute extreme maneuvers based on hummingbird display dives}
+\author{MIDN 1/C E.~Marcello and Asst. Prof. D.~Evangelista\thanks{Authors are with the United States Naval Academy, Department of Weapons, Robotics, and Control Engineering}}
+\date{\today}
+
+
+% For EW404 title and signature page
+\usepackage{titlepage4956}
+\coursenumber{EW404}
+\advisor{Assistant Professor D. Evangelista}
+\coverpicture{\includegraphics[height=1.88in]{\myroot/figures/problem-statement-1a.png}%
+\includegraphics[height=1.88in]{\myroot/figures/problem-statement-1b.png}}
+
+
+\begin{document}
+\maketitlepage
+\maketitle
+
+\begin{abstract}
+Using a small indoor quadrotor (Crazyflie 2.1), and a multi-camera motion tracking system (OptiTrack) this research seeks to autonomously execute extreme maneuvers observed in flying animals.  My primary goal will be to discover the maximum degree to which a small unmanned aerial system can recreate the courtship display dives of Anna's Hummingbirds (\emph{Calypte anna}) through analysis of a time-scaled root mean square error between the bird and quadrotor trajectories. In animals, and especially in species with sexual selection / female choice, extreme maneuvers are expected to provide an honest signal of mate quality, e.g. his ability to generate large forces and torques and perform fine control during locomotion, including at high speed. Animals also accomplish these in variable environments with varying flow, turbulence, and lighting conditions. Performing such manuevers with unmanned aerial systems is expected to be an engineering challenge that could help provide robotic systems with access to difficult-to-reach places, and further expand their usefulness and applications in the public and private sectors.
+
+%Alt abstract: The research discussed in this paper is concerned with the replication of the highly aggressive aerial maneuvers of the Anna’s Hummingbird on an autonomous quadrotor platform. Specifically, this research aims to determine the extent to which these maneuvers are possible through analysis of a time-scaled root mean square error between the bird and quadrotor trajectories. Analysis will be conducted through both simulation and proof of concept demonstrations on the Crazyflie 2.1 platform. The proof of concept demonstration will utilize an OptiTrack motion capture system to ensure a high degree of accuracy is recorded for the quadrotor trajectory, and the experiment will be conducted inside to minimize any possible disturbances in the air. 
+
+%This research proposal seeks to use aggressive quadrotor maneuvering and path planning to fly the same trajectory Anna’s hummingbirds execute during their courtship display dives with a Crazyflie 2.1 quadrotor. Aggressive autonomous maneuvering for quadrotors has been a focused area of study by many researchers over the past several years; however, there have not yet been many attempts at replicating aggressive flight patterns seen in biological species. In being one of the first research topics into flying Anna’s hummingbird dive trajectories with an autonomous platform, this paper aims to discover an advantage to this specific type of maneuver for autonomous aerial vehicles. To execute this task, I will be relying heavily on prior work completed in autonomous control of the Crazyflie quadrotor, utilizing a quaternion model of the quadrotor flight dynamics. Additionally, I will be using previously obtained data for the Anna’s hummingbird flight trajectories. To measure the feasibility of the maneuver I plan to conduct trials both in simulation and in proof of concept demonstration that will compare the trajectory of the quadrotor to the hummingbird flight trajectory using a root mean square error between sampled data points along the trajectory paths. The total projected cost of the project is \SI{28470}[\$] including a cost \SI{370}[\$] in new materials. The timeline estimates project completion in 24 weeks, with the highest risk being my requirement of learning 2 new programming languages, ROS and Python, and possible damage to the Crazyflie quadrotor in the event of a failed maneuver
+\end{abstract}
+
+\begin{IEEEkeywords}
+capstone, robotics, controls
+\end{IEEEkeywords}
+
+
+\input{background.tex} %\section{Background and motivation}
+\input{problem-statement.tex} %\section{Problem statement}
+\input{literature.tex} %\section{Literature review}
+\input{methods.tex} %\secton{Methods and materials}
+\input{results.tex} %\section{Results}
+
+\clearpage
+\input{discussion.tex} %\section{Discussion}
+
+
+
+\section*{Acknowledgements}
+I would like to thank Professor Clark for providing example \Canna\ trajectories to utilize for my research. 
+%Additionally thanks to many members of USNA's faculty including Professor Piper and Professor Dawkins \would be more appropriate to add after next semester I think.
+
+\bibliographystyle{IEEEtran}
+\bibliography{IEEEabrv,\myroot/references/marcello}
+
+
+
+
+%\clearpage
+%\appendix
+%\renewcommand{\figurename}{Supplementary Figure}
+%\renewcommand{\thefigure}{S\arabic{figure}}
+%\input{schedule-appendix-495.tex}
+
+  
+
+
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{\myroot/figures/M203876.jpg}}]{Ethan Marcello} is a midshipman at the United States Naval Academy majoring in Robotics and Control Engineering. Upon graduation, will attend graduate school at Northeastern University.  He has service selected Surface Warfare Officer with the Engineering Duty Officer option. 
+\end{IEEEbiography}
+
+%
+%\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{\myroot/figures/evangelista_d_prof.jpg}}]{Dennis Evangelista} raises guide dog puppies. 
+%\end{IEEEbiography}
+
+\end{document}
