@@ -73,13 +73,14 @@
 
 
 \title{Autonomous trajectory planning to execute extreme maneuvers based on hummingbird display dives}
-\author{MIDN 1/C E.~Marcello and Asst. Prof. D.~Evangelista\thanks{Authors are with the United States Naval Academy, Department of Weapons, Robotics, and Control Engineering}}
+\author{MIDN 1/C E.~Marcello and Asst. Prof. D.~Evangelista\thanks{Authors are with the United States Naval Academy, Department of Weapons, Robotics, and Control Engineering. Address for correspondence: \emph{ethanmarcello@gmail.com}}}
 \date{\today}
 
 
 % For EW404 title and signature page
 \usepackage{titlepage4956}
 \coursenumber{EW404}
+\student{MIDN 1/C E.~Marcello}
 \advisor{Assistant Professor D. Evangelista}
 \coverpicture{\includegraphics[height=1.88in]{\myroot/figures/problem-statement-1a.png}%
 \includegraphics[height=1.88in]{\myroot/figures/problem-statement-1b.png}}
@@ -90,7 +91,7 @@
 \maketitle
 
 \begin{abstract}
-Using a small indoor quadrotor (Crazyflie 2.1), and a multi-camera motion tracking system (OptiTrack) this research seeks to autonomously execute extreme maneuvers observed in flying animals.  My primary goal will be to discover the maximum degree to which a small unmanned aerial system can recreate the courtship display dives of Anna's Hummingbirds (\emph{Calypte anna}) through analysis of a time-scaled root mean square error between the bird and quadrotor trajectories. In animals, and especially in species with sexual selection / female choice, extreme maneuvers are expected to provide an honest signal of mate quality, e.g. his ability to generate large forces and torques and perform fine control during locomotion, including at high speed. Animals also accomplish these in variable environments with varying flow, turbulence, and lighting conditions. Performing such manuevers with unmanned aerial systems is expected to be an engineering challenge that could help provide robotic systems with access to difficult-to-reach places, and further expand their usefulness and applications in the public and private sectors.
+Using a small indoor quadrotor (Crazyflie 2.1), and a multi-camera motion tracking system (OptiTrack) this research seeks to autonomously execute extreme maneuvers observed in flying animals.  My primary goal was to discover the maximum degree to which a small unmanned aerial system can recreate the courtship display dives of Anna's Hummingbirds (\emph{Calypte anna}) through analysis of a time-scaled root mean square error between the bird and quadrotor trajectories. In animals, and especially in species with sexual selection / female choice, extreme maneuvers are expected to provide an honest signal of mate quality, e.g. his ability to generate large forces and torques and perform fine control during locomotion, including at high speed. Animals also accomplish these in variable environments with varying flow, turbulence, and lighting conditions. Performing such manuevers with unmanned aerial systems is expected to be an engineering challenge that could help provide robotic systems with access to difficult-to-reach places, and further expand their usefulness and applications in the public and private sectors. At low speeds, I found that a control scheme consisting of a low level autopilot flight controller operating in level mode combined with a higher level path planning position controller was able to approximate the manuevers; however, as speed increased, position control was no longer able to adequately track the required trajectory. Efforts to demonstrate this in hardware were thwarted by the global COVID-19 pandemic, however, the building blocks I created are available for future midshipman research on this topic. Furthermore, to address higher speed maneuvers, I propose an alternative control design analagous to human drone racing pilots operating in acro mode.
 
 %Alt abstract: The research discussed in this paper is concerned with the replication of the highly aggressive aerial maneuvers of the Anna’s Hummingbird on an autonomous quadrotor platform. Specifically, this research aims to determine the extent to which these maneuvers are possible through analysis of a time-scaled root mean square error between the bird and quadrotor trajectories. Analysis will be conducted through both simulation and proof of concept demonstrations on the Crazyflie 2.1 platform. The proof of concept demonstration will utilize an OptiTrack motion capture system to ensure a high degree of accuracy is recorded for the quadrotor trajectory, and the experiment will be conducted inside to minimize any possible disturbances in the air. 
 
@@ -98,7 +99,7 @@ Using a small indoor quadrotor (Crazyflie 2.1), and a multi-camera motion tracki
 \end{abstract}
 
 \begin{IEEEkeywords}
-capstone, robotics, controls
+\Calypteanna, quadrotor, control, maneuver, path planning, autopilot, acro, crazyflie, Optitrack, \Matlab, ROS
 \end{IEEEkeywords}
 
 
